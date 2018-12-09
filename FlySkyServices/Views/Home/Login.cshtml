@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<div class="row">
+    <div class="container">
+        <div class="col-lg-offset-3">
+            <div class="">
+                <form method="post">
+                    <div class="h1">Fly Sky Login </div>
+                    <hr />
+                    @*<div class="form-control">*@
+                        <label for="UserID">Login ID </label>
+                        <input type="text" id="UserID" name="UserID" required="required" />
+                    @*</div>
+                    <div class="form-control">*@
+                        <label for="txtPassword">Password </label>
+                        <input type="password" id="txtPassword" name="txtPassword" required="required" />
+                    @*</div>*@
+                    <input type="submit" value="Login" />
+                    @*<button type="button">Cancel</button>*@
+                </form>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script>
+    $('@ViewBag.LoginMessage' != '')
+    {
+        alert('@ViewBag.LoginMessage');
+    }
+
+</script>

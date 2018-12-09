@@ -1,0 +1,131 @@
+﻿@model FlySkyServices.Models.M_FlightInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>M_FlightInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEconomy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEconomy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPremiumEconomy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPremiumEconomy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBusiness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBusiness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfSeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoOfSeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.M_AviationCompanyMaster.CompanyCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_AviationCompanyMaster.CompanyCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.M_MasterTable.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_MasterTable.Text)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FlightId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

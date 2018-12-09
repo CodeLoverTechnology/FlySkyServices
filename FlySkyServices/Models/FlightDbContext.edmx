@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FlightDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="M_AirportMasters">
+          <Key>
+            <PropertyRef Name="AirportID" />
+          </Key>
+          <Property Name="AirportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AirportCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AirportName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TerminalCount" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_AviationCompanyMaster">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="ContactPerson" Type="nvarchar(max)" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_CityMaster">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StateCountryID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_FlightInfo">
+          <Key>
+            <PropertyRef Name="FlightId" />
+          </Key>
+          <Property Name="FlightId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightNumber" Type="nvarchar(max)" />
+          <Property Name="RegistrationNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="FlightStatus" Type="int" />
+          <Property Name="IsEconomy" Type="bit" Nullable="false" />
+          <Property Name="IsPremiumEconomy" Type="bit" Nullable="false" />
+          <Property Name="IsBusiness" Type="bit" Nullable="false" />
+          <Property Name="NoOfSeat" Type="int" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="Desc" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_MasterTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_StateCountryMaster">
+          <Key>
+            <PropertyRef Name="StateCountryID" />
+          </Key>
+          <Property Name="StateCountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_FlightsTable">
+          <Key>
+            <PropertyRef Name="FlightTableID" />
+          </Key>
+          <Property Name="FlightTableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightId" Type="int" Nullable="false" />
+          <Property Name="FlightNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FlightDate" Type="datetime" />
+          <Property Name="FromTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ToTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Departure" Type="int" Nullable="false" />
+          <Property Name="Arrival" Type="int" Nullable="false" />
+          <Property Name="FlightStatus" Type="int" Nullable="false" />
+          <Property Name="DelayStatus" Type="int" Nullable="false" />
+          <Property Name="DelayedReason" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__M_FlightI__Compa__30F848ED">
+          <End Role="M_AviationCompanyMaster" Type="Self.M_AviationCompanyMaster" Multiplicity="0..1" />
+          <End Role="M_FlightInfo" Type="Self.M_FlightInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_AviationCompanyMaster">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="M_FlightInfo">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__M_FlightI__Fligh__300424B4">
+          <End Role="M_MasterTable" Type="Self.M_MasterTable" Multiplicity="0..1" />
+          <End Role="M_FlightInfo" Type="Self.M_FlightInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_MasterTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_FlightInfo">
+              <PropertyRef Name="FlightStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_M_AirportMasters_M_CityMaster">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="M_AirportMasters" Type="Self.M_AirportMasters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="M_AirportMasters">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_M_AviationCompanyMaster_M_CityMaster">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="M_AviationCompanyMaster" Type="Self.M_AviationCompanyMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="M_AviationCompanyMaster">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_M_CityMaster_M_StateCountryMaster">
+          <End Role="M_StateCountryMaster" Type="Self.M_StateCountryMaster" Multiplicity="1" />
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_StateCountryMaster">
+              <PropertyRef Name="StateCountryID" />
+            </Principal>
+            <Dependent Role="M_CityMaster">
+              <PropertyRef Name="StateCountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_CityMaster">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="Departure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_CityMaster1">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="Arrival" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_FlightInfo">
+          <End Role="M_FlightInfo" Type="Self.M_FlightInfo" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_FlightInfo">
+              <PropertyRef Name="FlightId" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="FlightId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_MasterTable">
+          <End Role="M_MasterTable" Type="Self.M_MasterTable" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_MasterTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="FlightStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_MasterTable1">
+          <End Role="M_MasterTable" Type="Self.M_MasterTable" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_MasterTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="DelayStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FlightDBModelStoreContainer">
+          <EntitySet Name="M_AirportMasters" EntityType="Self.M_AirportMasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_AviationCompanyMaster" EntityType="Self.M_AviationCompanyMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_CityMaster" EntityType="Self.M_CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_FlightInfo" EntityType="Self.M_FlightInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_MasterTable" EntityType="Self.M_MasterTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_StateCountryMaster" EntityType="Self.M_StateCountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_FlightsTable" EntityType="Self.T_FlightsTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__M_FlightI__Compa__30F848ED" Association="Self.FK__M_FlightI__Compa__30F848ED">
+            <End Role="M_AviationCompanyMaster" EntitySet="M_AviationCompanyMaster" />
+            <End Role="M_FlightInfo" EntitySet="M_FlightInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__M_FlightI__Fligh__300424B4" Association="Self.FK__M_FlightI__Fligh__300424B4">
+            <End Role="M_MasterTable" EntitySet="M_MasterTable" />
+            <End Role="M_FlightInfo" EntitySet="M_FlightInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_AirportMasters_M_CityMaster" Association="Self.FK_M_AirportMasters_M_CityMaster">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="M_AirportMasters" EntitySet="M_AirportMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_AviationCompanyMaster_M_CityMaster" Association="Self.FK_M_AviationCompanyMaster_M_CityMaster">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="M_AviationCompanyMaster" EntitySet="M_AviationCompanyMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_CityMaster_M_StateCountryMaster" Association="Self.FK_M_CityMaster_M_StateCountryMaster">
+            <End Role="M_StateCountryMaster" EntitySet="M_StateCountryMaster" />
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_CityMaster" Association="Self.FK_T_FlightsTable_M_CityMaster">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_CityMaster1" Association="Self.FK_T_FlightsTable_M_CityMaster1">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_FlightInfo" Association="Self.FK_T_FlightsTable_M_FlightInfo">
+            <End Role="M_FlightInfo" EntitySet="M_FlightInfo" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_MasterTable" Association="Self.FK_T_FlightsTable_M_MasterTable">
+            <End Role="M_MasterTable" EntitySet="M_MasterTable" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_MasterTable1" Association="Self.FK_T_FlightsTable_M_MasterTable1">
+            <End Role="M_MasterTable" EntitySet="M_MasterTable" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FlightDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="M_AirportMasters">
+          <Key>
+            <PropertyRef Name="AirportID" />
+          </Key>
+          <Property Name="AirportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AirportCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AirportName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerminalCount" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_CityMaster" Relationship="Self.FK_M_AirportMasters_M_CityMaster" FromRole="M_AirportMasters" ToRole="M_CityMaster" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_AviationCompanyMaster">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_FlightInfo" Relationship="Self.FK__M_FlightI__Compa__30F848ED" FromRole="M_AviationCompanyMaster" ToRole="M_FlightInfo" />
+          <NavigationProperty Name="M_CityMaster" Relationship="Self.FK_M_AviationCompanyMaster_M_CityMaster" FromRole="M_AviationCompanyMaster" ToRole="M_CityMaster" />
+        </EntityType>
+        <EntityType Name="M_CityMaster">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateCountryID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_AirportMasters" Relationship="Self.FK_M_AirportMasters_M_CityMaster" FromRole="M_CityMaster" ToRole="M_AirportMasters" />
+          <NavigationProperty Name="M_AviationCompanyMaster" Relationship="Self.FK_M_AviationCompanyMaster_M_CityMaster" FromRole="M_CityMaster" ToRole="M_AviationCompanyMaster" />
+          <NavigationProperty Name="M_StateCountryMaster" Relationship="Self.FK_M_CityMaster_M_StateCountryMaster" FromRole="M_CityMaster" ToRole="M_StateCountryMaster" />
+          <NavigationProperty Name="T_FlightsTable" Relationship="Self.FK_T_FlightsTable_M_CityMaster" FromRole="M_CityMaster" ToRole="T_FlightsTable" />
+          <NavigationProperty Name="T_FlightsTable1" Relationship="Self.FK_T_FlightsTable_M_CityMaster1" FromRole="M_CityMaster" ToRole="T_FlightsTable" />
+        </EntityType>
+        <EntityType Name="M_FlightInfo">
+          <Key>
+            <PropertyRef Name="FlightId" />
+          </Key>
+          <Property Name="FlightId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FlightStatus" Type="Int32" />
+          <Property Name="IsEconomy" Type="Boolean" Nullable="false" />
+          <Property Name="IsPremiumEconomy" Type="Boolean" Nullable="false" />
+          <Property Name="IsBusiness" Type="Boolean" Nullable="false" />
+          <Property Name="NoOfSeat" Type="Int32" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_AviationCompanyMaster" Relationship="Self.FK__M_FlightI__Compa__30F848ED" FromRole="M_FlightInfo" ToRole="M_AviationCompanyMaster" />
+          <NavigationProperty Name="M_MasterTable" Relationship="Self.FK__M_FlightI__Fligh__300424B4" FromRole="M_FlightInfo" ToRole="M_MasterTable" />
+          <NavigationProperty Name="T_FlightsTable" Relationship="Self.FK_T_FlightsTable_M_FlightInfo" FromRole="M_FlightInfo" ToRole="T_FlightsTable" />
+        </EntityType>
+        <EntityType Name="M_MasterTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_FlightInfo" Relationship="Self.FK__M_FlightI__Fligh__300424B4" FromRole="M_MasterTable" ToRole="M_FlightInfo" />
+          <NavigationProperty Name="T_FlightsTable" Relationship="Self.FK_T_FlightsTable_M_MasterTable" FromRole="M_MasterTable" ToRole="T_FlightsTable" />
+          <NavigationProperty Name="T_FlightsTable1" Relationship="Self.FK_T_FlightsTable_M_MasterTable1" FromRole="M_MasterTable" ToRole="T_FlightsTable" />
+        </EntityType>
+        <EntityType Name="M_StateCountryMaster">
+          <Key>
+            <PropertyRef Name="StateCountryID" />
+          </Key>
+          <Property Name="StateCountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_CityMaster" Relationship="Self.FK_M_CityMaster_M_StateCountryMaster" FromRole="M_StateCountryMaster" ToRole="M_CityMaster" />
+        </EntityType>
+        <EntityType Name="T_FlightsTable">
+          <Key>
+            <PropertyRef Name="FlightTableID" />
+          </Key>
+          <Property Name="FlightTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightId" Type="Int32" Nullable="false" />
+          <Property Name="FlightNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="ToTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Departure" Type="Int32" Nullable="false" />
+          <Property Name="Arrival" Type="Int32" Nullable="false" />
+          <Property Name="FlightStatus" Type="Int32" Nullable="false" />
+          <Property Name="DelayStatus" Type="Int32" Nullable="false" />
+          <Property Name="DelayedReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_CityMaster" Relationship="Self.FK_T_FlightsTable_M_CityMaster" FromRole="T_FlightsTable" ToRole="M_CityMaster" />
+          <NavigationProperty Name="M_CityMaster1" Relationship="Self.FK_T_FlightsTable_M_CityMaster1" FromRole="T_FlightsTable" ToRole="M_CityMaster" />
+          <NavigationProperty Name="M_FlightInfo" Relationship="Self.FK_T_FlightsTable_M_FlightInfo" FromRole="T_FlightsTable" ToRole="M_FlightInfo" />
+          <NavigationProperty Name="M_MasterTable" Relationship="Self.FK_T_FlightsTable_M_MasterTable" FromRole="T_FlightsTable" ToRole="M_MasterTable" />
+          <NavigationProperty Name="M_MasterTable1" Relationship="Self.FK_T_FlightsTable_M_MasterTable1" FromRole="T_FlightsTable" ToRole="M_MasterTable" />
+          <Property Name="FlightDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_M_AirportMasters_M_CityMaster">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="M_AirportMasters" Type="Self.M_AirportMasters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="M_AirportMasters">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__M_FlightI__Compa__30F848ED">
+          <End Role="M_AviationCompanyMaster" Type="Self.M_AviationCompanyMaster" Multiplicity="0..1" />
+          <End Role="M_FlightInfo" Type="Self.M_FlightInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_AviationCompanyMaster">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="M_FlightInfo">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_M_AviationCompanyMaster_M_CityMaster">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="M_AviationCompanyMaster" Type="Self.M_AviationCompanyMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="M_AviationCompanyMaster">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_M_CityMaster_M_StateCountryMaster">
+          <End Role="M_StateCountryMaster" Type="Self.M_StateCountryMaster" Multiplicity="1" />
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_StateCountryMaster">
+              <PropertyRef Name="StateCountryID" />
+            </Principal>
+            <Dependent Role="M_CityMaster">
+              <PropertyRef Name="StateCountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_CityMaster">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="Departure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_CityMaster1">
+          <End Role="M_CityMaster" Type="Self.M_CityMaster" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_CityMaster">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="Arrival" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__M_FlightI__Fligh__300424B4">
+          <End Role="M_MasterTable" Type="Self.M_MasterTable" Multiplicity="0..1" />
+          <End Role="M_FlightInfo" Type="Self.M_FlightInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_MasterTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_FlightInfo">
+              <PropertyRef Name="FlightStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_FlightInfo">
+          <End Role="M_FlightInfo" Type="Self.M_FlightInfo" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_FlightInfo">
+              <PropertyRef Name="FlightId" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="FlightId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_MasterTable">
+          <End Role="M_MasterTable" Type="Self.M_MasterTable" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_MasterTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="FlightStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FlightsTable_M_MasterTable1">
+          <End Role="M_MasterTable" Type="Self.M_MasterTable" Multiplicity="1" />
+          <End Role="T_FlightsTable" Type="Self.T_FlightsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_MasterTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="T_FlightsTable">
+              <PropertyRef Name="DelayStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FlightDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="M_AirportMasters" EntityType="Self.M_AirportMasters" />
+          <EntitySet Name="M_AviationCompanyMaster" EntityType="Self.M_AviationCompanyMaster" />
+          <EntitySet Name="M_CityMaster" EntityType="Self.M_CityMaster" />
+          <EntitySet Name="M_FlightInfo" EntityType="Self.M_FlightInfo" />
+          <EntitySet Name="M_MasterTable" EntityType="Self.M_MasterTable" />
+          <EntitySet Name="M_StateCountryMaster" EntityType="Self.M_StateCountryMaster" />
+          <EntitySet Name="T_FlightsTable" EntityType="Self.T_FlightsTable" />
+          <AssociationSet Name="FK_M_AirportMasters_M_CityMaster" Association="Self.FK_M_AirportMasters_M_CityMaster">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="M_AirportMasters" EntitySet="M_AirportMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__M_FlightI__Compa__30F848ED" Association="Self.FK__M_FlightI__Compa__30F848ED">
+            <End Role="M_AviationCompanyMaster" EntitySet="M_AviationCompanyMaster" />
+            <End Role="M_FlightInfo" EntitySet="M_FlightInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_AviationCompanyMaster_M_CityMaster" Association="Self.FK_M_AviationCompanyMaster_M_CityMaster">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="M_AviationCompanyMaster" EntitySet="M_AviationCompanyMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_CityMaster_M_StateCountryMaster" Association="Self.FK_M_CityMaster_M_StateCountryMaster">
+            <End Role="M_StateCountryMaster" EntitySet="M_StateCountryMaster" />
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_CityMaster" Association="Self.FK_T_FlightsTable_M_CityMaster">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_CityMaster1" Association="Self.FK_T_FlightsTable_M_CityMaster1">
+            <End Role="M_CityMaster" EntitySet="M_CityMaster" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__M_FlightI__Fligh__300424B4" Association="Self.FK__M_FlightI__Fligh__300424B4">
+            <End Role="M_MasterTable" EntitySet="M_MasterTable" />
+            <End Role="M_FlightInfo" EntitySet="M_FlightInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_FlightInfo" Association="Self.FK_T_FlightsTable_M_FlightInfo">
+            <End Role="M_FlightInfo" EntitySet="M_FlightInfo" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_MasterTable" Association="Self.FK_T_FlightsTable_M_MasterTable">
+            <End Role="M_MasterTable" EntitySet="M_MasterTable" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FlightsTable_M_MasterTable1" Association="Self.FK_T_FlightsTable_M_MasterTable1">
+            <End Role="M_MasterTable" EntitySet="M_MasterTable" />
+            <End Role="T_FlightsTable" EntitySet="T_FlightsTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FlightDBModelStoreContainer" CdmEntityContainer="FlightDBEntities">
+          <EntitySetMapping Name="M_AirportMasters">
+            <EntityTypeMapping TypeName="FlightDBModel.M_AirportMasters">
+              <MappingFragment StoreEntitySet="M_AirportMasters">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AirportID" ColumnName="AirportID" />
+                <ScalarProperty Name="AirportCode" ColumnName="AirportCode" />
+                <ScalarProperty Name="AirportName" ColumnName="AirportName" />
+                <ScalarProperty Name="TerminalCount" ColumnName="TerminalCount" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_AviationCompanyMaster">
+            <EntityTypeMapping TypeName="FlightDBModel.M_AviationCompanyMaster">
+              <MappingFragment StoreEntitySet="M_AviationCompanyMaster">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_CityMaster">
+            <EntityTypeMapping TypeName="FlightDBModel.M_CityMaster">
+              <MappingFragment StoreEntitySet="M_CityMaster">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateCountryID" ColumnName="StateCountryID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_FlightInfo">
+            <EntityTypeMapping TypeName="FlightDBModel.M_FlightInfo">
+              <MappingFragment StoreEntitySet="M_FlightInfo">
+                <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+                <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="FlightStatus" ColumnName="FlightStatus" />
+                <ScalarProperty Name="IsEconomy" ColumnName="IsEconomy" />
+                <ScalarProperty Name="IsPremiumEconomy" ColumnName="IsPremiumEconomy" />
+                <ScalarProperty Name="IsBusiness" ColumnName="IsBusiness" />
+                <ScalarProperty Name="NoOfSeat" ColumnName="NoOfSeat" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_MasterTable">
+            <EntityTypeMapping TypeName="FlightDBModel.M_MasterTable">
+              <MappingFragment StoreEntitySet="M_MasterTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_StateCountryMaster">
+            <EntityTypeMapping TypeName="FlightDBModel.M_StateCountryMaster">
+              <MappingFragment StoreEntitySet="M_StateCountryMaster">
+                <ScalarProperty Name="StateCountryID" ColumnName="StateCountryID" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_FlightsTable">
+            <EntityTypeMapping TypeName="FlightDBModel.T_FlightsTable">
+              <MappingFragment StoreEntitySet="T_FlightsTable">
+                <ScalarProperty Name="FlightDate" ColumnName="FlightDate" />
+                <ScalarProperty Name="FlightTableID" ColumnName="FlightTableID" />
+                <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+                <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+                <ScalarProperty Name="FlightStatus" ColumnName="FlightStatus" />
+                <ScalarProperty Name="DelayStatus" ColumnName="DelayStatus" />
+                <ScalarProperty Name="DelayedReason" ColumnName="DelayedReason" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

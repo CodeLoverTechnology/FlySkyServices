@@ -1,0 +1,112 @@
+﻿@model IEnumerable<FlySkyServices.Models.M_FlightInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEconomy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPremiumEconomy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBusiness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfSeat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.M_AviationCompanyMaster.CompanyCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.M_MasterTable.Text)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsEconomy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPremiumEconomy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBusiness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfSeat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.M_AviationCompanyMaster.CompanyCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.M_MasterTable.Text)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FlightId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FlightId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FlightId })
+        </td>
+    </tr>
+}
+
+</table>

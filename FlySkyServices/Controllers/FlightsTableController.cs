@@ -27,7 +27,7 @@ namespace FlySkyServices.Controllers
             if (FlightDate != null)
             {
                 //var RunningFlightInfo = from s in db.T_FlightsTable.Where(x => x.FlightDate == FlightDate) select s;
-                var RunningFlightInfo = from s in db.T_FlightsTable.OrderByDescending(x => x.FlightDate) select s;
+                var RunningFlightInfo = from s in db.T_FlightsTable select s;
                 foreach (var flight in RunningFlightInfo)
                 {
                     ObjRunningFlightInfoList.Add(new RunningFlightInfo {

@@ -196,6 +196,7 @@
     <Compile Include="Controllers\M_FlightInfoController.cs" />
     <Compile Include="Controllers\M_MasterTableController.cs" />
     <Compile Include="Controllers\M_StateCountryMasterController.cs" />
+    <Compile Include="Controllers\T_FlightsTableController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -379,6 +380,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\T_FlightsTable\Create.cshtml" />
+    <Content Include="Views\T_FlightsTable\Delete.cshtml" />
+    <Content Include="Views\T_FlightsTable\Details.cshtml" />
+    <Content Include="Views\T_FlightsTable\Edit.cshtml" />
+    <Content Include="Views\T_FlightsTable\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
